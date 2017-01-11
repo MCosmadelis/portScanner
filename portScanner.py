@@ -31,21 +31,21 @@ def main():
 					if result == 0:
 						print "Port %i is open on %s" % (port ,ip)
 				banner = s.recv(4096)
-				if not banner =="":
+				if not banner == "":
 					print"\t%s" % banner
 				s.close()
 
-				except socket.error:
+			except socket.error:
 				print "Port %i is closed on %s" % (port, ip)
 
-				except socket.timeout:
-				print "Port %i is filtered on %s" % (port, ip) 
+			except socket.timeout:
+				print "Port %i is filtered on %s" % (port, ip)
 				
-				except KeyboardInterrupt:
-					print "Scan stopped."
+			except KeyboardInterrupt:
+				print "Scan stopped."
 						sys.exit()
-		except (NameError, IndexError) as e:
-			print "Usage: python banner.py [ip] [start port] [end port]"
+	except (NameError, IndexError) as e:
+		print "Usage: python banner.py [ip] [start port] [end port]"
 
 if __name__ == '__main__':
 	sys.exit(main())
